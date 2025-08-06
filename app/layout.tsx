@@ -12,10 +12,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "ACM - Elimine Gordura Abdominal em 3 Semanas | Método Comprovado",
   description: "Descubra o método ACM - Aceleração do Ciclo Metabólico. Elimine gordura abdominal em apenas 3 semanas com treinos de 16 minutos por dia. Sem dieta restritiva, sem equipamentos. Garantia de 7 dias.",
-  keywords: ["eliminar gordura abdominal", "perder peso", "acelerar metabolismo", "treino em casa", "queimar gordura", "ACM", "ciclo metabólico"],
+  keywords: ["eliminar gordura abdominal", "perder peso", "acelerar metabolismo", "treino em casa", "queimar gordura", "ACM", "ciclo metabólico", "emagrecer rápido", "queima de gordura", "método natural"],
   authors: [{ name: "ACM Method" }],
   creator: "ACM Method",
   publisher: "ACM Method",
+  category: "Health & Fitness",
+  classification: "Weight Loss Program",
   formatDetection: {
     email: false,
     address: false,
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/hero-man.jpg",
+        url: "/images/hero-man.webp",
         width: 1200,
         height: 630,
         alt: "Homem em forma mostrando abdômen definido após usar o método ACM"
@@ -45,7 +47,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ACM - Elimine Gordura Abdominal em 3 Semanas",
     description: "Método comprovado para acelerar o metabolismo e queimar gordura abdominal rapidamente.",
-    images: ["/images/hero-man.jpg"],
+    images: ["/images/hero-man.webp"],
+    creator: "@acmmethod",
+    site: "@acmmethod",
   },
   robots: {
     index: true,
@@ -74,6 +78,22 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <meta name="theme-color" content="#FFD700" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        
+        {/* Font preloading */}
+        <link
+          rel="preload"
+          href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        
+        {/* Preconnect hints for external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://connect.facebook.net" />
+        <link rel="dns-prefetch" href="https://pay.hotmart.com" />
         <link rel="prefetch" href="https://pay.hotmart.com" />
         
         {/* Google Tag Manager */}
@@ -122,7 +142,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               "name": "ACM - Aceleração do Ciclo Metabólico",
               "description": "Método para eliminar gordura abdominal em 3 semanas com treinos de 16 minutos por dia",
               "image": [
-                "https://acm-method.com/images/hero-man.jpg"
+                "https://acm-method.com/images/hero-man.webp"
               ],
               "brand": {
                 "@type": "Brand",
