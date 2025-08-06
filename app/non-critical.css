@@ -1,29 +1,45 @@
-@import "tailwindcss";
+/* Non-critical styles loaded after initial render */
 
-/* Critical base styles only */
-:root {
-  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --primary-yellow: #FFD700;
-  --primary-black: #000000;
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Enhanced typography */
 body {
-  font-family: var(--font-inter);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv11', 'ss01';
+  font-variation-settings: 'opsz' 32;
 }
 
-/* Critical responsive images */
-img {
-  height: auto;
-  max-width: 100%;
+/* Button enhancements */
+.cta-button {
+  @apply inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-xl px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-lg;
+  
+  /* Prevent layout shift during hover */
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
-/* Focus styles for accessibility */
-*:focus-visible {
-  outline: 2px solid var(--primary-yellow);
-  outline-offset: 2px;
+.cta-button:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.cta-button:active {
+  transform: translateY(0) scale(0.98);
 }
 
 /* Optimized animations */
@@ -42,12 +58,6 @@ img {
 .gpu-accelerated {
   transform: translateZ(0);
   will-change: transform;
-}
-
-/* Responsive images */
-img {
-  height: auto;
-  max-width: 100%;
 }
 
 /* Loading states */

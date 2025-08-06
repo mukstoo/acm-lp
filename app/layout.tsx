@@ -79,6 +79,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         
+        {/* Critical resource hints */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://connect.facebook.net" />
+        <link rel="preconnect" href="https://pay.hotmart.com" />
+        <link rel="dns-prefetch" href="https://vercel.app" />
+        
         {/* Font preloading */}
         <link
           rel="preload"
@@ -88,13 +96,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
           crossOrigin="anonymous"
         />
         
-        {/* Preconnect hints for external domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://connect.facebook.net" />
-        <link rel="dns-prefetch" href="https://pay.hotmart.com" />
-        <link rel="prefetch" href="https://pay.hotmart.com" />
+        {/* Critical CSS inline to avoid render blocking */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            *,*::before,*::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
+            *::before,*::after{--tw-content:''}
+            html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal}
+            body{margin:0;line-height:inherit}
+            .font-black{font-weight:900}
+            .text-center{text-align:center}
+            .bg-white{background-color:rgb(255 255 255)}
+            .min-h-screen{min-height:100vh}
+          `
+        }} />
         
         {/* Google Tag Manager */}
         <Script
@@ -111,10 +125,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           }}
         />
         
-        {/* Meta Pixel */}
+        {/* Meta Pixel - Optimized loading */}
         <Script
           id="fb-pixel"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
             !function(f,b,e,v,n,t,s)
@@ -128,6 +142,22 @@ export default function RootLayout({ children }: RootLayoutProps) {
             fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL_ID || 'XXXXXXXXXXXXXXXXX'}');
             fbq('track', 'PageView');
             `,
+          }}
+        />
+
+        {/* Non-critical CSS - Load after initial render */}
+        <Script
+          id="load-non-critical-css"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              const link = document.createElement('link');
+              link.rel = 'stylesheet';
+              link.href = '/non-critical.css';
+              link.media = 'print';
+              link.onload = function() { this.media = 'all'; };
+              document.head.appendChild(link);
+            `
           }}
         />
 

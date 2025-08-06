@@ -6,16 +6,63 @@ const nextConfig = {
   // Image optimization
   images: {
     formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     // unoptimized: true, // Only needed for static export
   },
   
   // Performance optimizations
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
+    optimizeCss: true,
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
   },
   
   // Compression
   compress: true,
+  
+  // Modern JavaScript target
+  swcMinify: true,
+  
+  // Cache headers
+  async headers() {
+    return [
+      {
+        source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/images/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=2592000, must-revalidate',
+          },
+        ],
+      },
+      {
+        source: '/(.*).webp',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=2592000, must-revalidate',
+          },
+        ],
+      },
+    ];
+  },
 }
 
 export default nextConfig
