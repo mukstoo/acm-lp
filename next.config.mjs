@@ -15,21 +15,25 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
     optimizeCss: true,
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
+  },
+  
+  // Modern compilation target to avoid polyfills
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  
+  // Turbopack configuration (stable in Next.js 15)
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
       },
     },
   },
   
   // Compression
   compress: true,
-  
-  // Modern JavaScript target
-  swcMinify: true,
   
   // Cache headers
   async headers() {
@@ -48,7 +52,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=2592000, must-revalidate',
+            value: 'public, max-age=31536000, immutable',
           },
         ],
       },
@@ -57,10 +61,11 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=2592000, must-revalidate',
+            value: 'public, max-age=31536000, immutable',
           },
         ],
       },
+
     ];
   },
 }

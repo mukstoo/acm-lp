@@ -23,7 +23,7 @@ export default function LandingPage() {
           className="px-5 py-12 lg:px-0 lg:py-0"
           style={{ backgroundColor: "rgb(43, 24, 33)" }}
         >
-          <div className="max-w-sm mx-auto xl:max-w-7xl lg:grid lg:grid-cols-2">
+          <div className="max-w-sm mx-auto xl:max-w-[1400px] lg:grid lg:grid-cols-2">
             {/* Left Column - Text Content */}
             <div className="lg:px-16 lg:flex lg:flex-col lg:justify-center">
               {/* Heading - Responsive sizing */}
@@ -35,44 +35,38 @@ export default function LandingPage() {
               </h1>
 
               {/* Sub-heading - Responsive sizing */}
-              <p className="text-white text-center lg:text-left mb-10 lg:mb-12 text-xl lg:text-3xl font-[900]">
+              <p className="text-white text-left mb-10 lg:mb-12 text-xl lg:text-3xl font-[900]">
                 Com o exclusivo <strong>Método ACM</strong> - Aceleração do
                 Ciclo Metabólico
               </p>
 
               {/* Benefits List - Responsive sizing */}
-              <div className="space-y-4 lg:space-y-2 mb-12 lg:mb-16">
-                <div className="flex items-center gap-4 lg:gap-6">
+              <ul className="space-y-4 lg:space-y-2 mb-12 lg:mb-16">
+                <li className="flex items-center gap-4 lg:gap-6">
                   <span className="text-white text-xl lg:text-3xl font-[900]">
                     Treino de 16 minutos
                   </span>
-                  <div className="w-6 h-6 lg:w-8 lg:h-8 bg-green-500 rounded flex items-center justify-center">
-                    <span className="text-white text-sm lg:text-base font-bold">
-                      ✓
-                    </span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 lg:gap-6">
+                  <span className="w-6 h-6 lg:w-8 lg:h-8 bg-green-500 rounded flex items-center justify-center text-white text-sm lg:text-base font-bold">
+                    ✓
+                  </span>
+                </li>
+                <li className="flex items-center gap-4 lg:gap-6">
                   <span className="text-white text-xl lg:text-3xl font-[900]">
                     Sem academia
                   </span>
-                  <div className="w-6 h-6 lg:w-8 lg:h-8 bg-green-500 rounded flex items-center justify-center">
-                    <span className="text-white text-sm lg:text-base font-bold">
-                      ✓
-                    </span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 lg:gap-6">
+                  <span className="w-6 h-6 lg:w-8 lg:h-8 bg-green-500 rounded flex items-center justify-center text-white text-sm lg:text-base font-bold">
+                    ✓
+                  </span>
+                </li>
+                <li className="flex items-center gap-4 lg:gap-6">
                   <span className="text-white text-xl lg:text-3xl font-[900]">
                     Sem dieta restritiva
                   </span>
-                  <div className="w-6 h-6 lg:w-8 lg:h-8 bg-green-500 rounded flex items-center justify-center">
-                    <span className="text-white text-sm lg:text-base font-bold">
-                      ✓
-                    </span>
-                  </div>
-                </div>
-              </div>
+                  <span className="w-6 h-6 lg:w-8 lg:h-8 bg-green-500 rounded flex items-center justify-center text-white text-sm lg:text-base font-bold">
+                    ✓
+                  </span>
+                </li>
+              </ul>
 
               {/* CTA Button - Centered on desktop */}
               <div className="text-center">
@@ -104,9 +98,10 @@ export default function LandingPage() {
                 width={1077}
                 height={1095}
                 className="object-cover object-center w-full h-full"
-                sizes="(min-width: 1024px) 50vw, 100vw"
+                sizes="50vw"
                 priority
                 fetchPriority="high"
+                quality={85}
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkrHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJIwUzkVahQBCLxqhz3tTxw="
               />
@@ -125,9 +120,10 @@ export default function LandingPage() {
             width={1077}
             height={1095}
             className="object-cover w-full h-full"
-            sizes="(max-width: 1023px) 100vw, 50vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 33vw"
             priority
             fetchPriority="high"
+            quality={70}
             placeholder="blur"
             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkrHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJIwUzkVahQBCLxqhz3tTxw="
           />
@@ -332,8 +328,9 @@ export default function LandingPage() {
                   width={942}
                   height={1387}
                   className="object-cover w-full h-full"
-                  sizes="(min-width: 1024px) 384px, 100vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 384px"
                   loading="lazy"
+                  quality={75}
                   placeholder="blur"
                   blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkrHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJIwUzkVahQBCLxqhz3tTxw="
                 />

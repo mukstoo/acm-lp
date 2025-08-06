@@ -79,22 +79,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         
-        {/* Critical resource hints */}
+        {/* Critical resource hints - Only top 4 most important */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://connect.facebook.net" />
-        <link rel="preconnect" href="https://pay.hotmart.com" />
-        <link rel="dns-prefetch" href="https://vercel.app" />
         
-        {/* Font preloading */}
-        <link
-          rel="preload"
-          href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+        {/* DNS prefetch for less critical origins */}
+        <link rel="dns-prefetch" href="https://pay.hotmart.com" />
+        <link rel="dns-prefetch" href="https://vercel.app" />
         
         {/* Critical CSS inline to avoid render blocking */}
         <style dangerouslySetInnerHTML={{
@@ -107,59 +100,55 @@ export default function RootLayout({ children }: RootLayoutProps) {
             .text-center{text-align:center}
             .bg-white{background-color:rgb(255 255 255)}
             .min-h-screen{min-height:100vh}
+            .object-cover{object-fit:cover}
+            .w-full{width:100%}
+            .h-full{height:100%}
+            .hidden{display:none}
+            @media(min-width:1024px){.lg\\:block{display:block}.lg\\:hidden{display:none}}
           `
         }} />
         
-        {/* Google Tag Manager */}
+        {/* Google Tag Manager - Optimized */}
         <Script
           id="gtm-script"
+          src={`https://www.googletagmanager.com/gtm.js?id=${process.env.NEXT_PUBLIC_GTM_ID || 'GTM-XXXXXXX'}`}
           strategy="afterInteractive"
+        />
+        <Script
+          id="gtm-datalayer"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID || 'GTM-XXXXXXX'}');
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GTM_ID || 'GTM-XXXXXXX'}');
             `,
           }}
         />
         
-        {/* Meta Pixel - Optimized loading */}
+        {/* Meta Pixel - Ultra-optimized loading */}
         <Script
-          id="fb-pixel"
-          strategy="lazyOnload"
+          id="fb-pixel-stub"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
             if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
+            n.queue=[];}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL_ID || 'XXXXXXXXXXXXXXXXX'}');
             fbq('track', 'PageView');
             `,
           }}
         />
-
-        {/* Non-critical CSS - Load after initial render */}
         <Script
-          id="load-non-critical-css"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              const link = document.createElement('link');
-              link.rel = 'stylesheet';
-              link.href = '/non-critical.css';
-              link.media = 'print';
-              link.onload = function() { this.media = 'all'; };
-              document.head.appendChild(link);
-            `
-          }}
+          id="fb-pixel-script"
+          src="https://connect.facebook.net/en_US/fbevents.js"
+          strategy="lazyOnload"
         />
+
+
 
         {/* JSON-LD Structured Data */}
         <Script
