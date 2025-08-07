@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import { SquareCheckBig, Shield, Pizza } from "lucide-react";
+import { SquareCheckBig } from "lucide-react";
 import { CTAButton } from "@/components/cta-button";
 
 export const dynamic = "error";
@@ -152,7 +152,7 @@ export default function LandingPage() {
             <div className="space-y-5 lg:space-y-8">
               <div className="flex items-center gap-4 lg:gap-6">
                 <div className="w-6 h-6 lg:w-8 lg:h-8 bg-white rounded-full border-2 border-red-500 flex items-center justify-center relative flex-shrink-0">
-                  <div className="absolute w-4 lg:w-6 h-0.5 bg-red-500 rotate-45"></div>
+                  <div className="absolute w-6 lg:w-8 h-0.5 bg-red-500 rotate-45"></div>
                 </div>
                 <span className="text-white text-xl lg:text-4xl font-bold">
                   Falta de tempo
@@ -160,7 +160,7 @@ export default function LandingPage() {
               </div>
               <div className="flex items-center gap-4 lg:gap-6">
                 <div className="w-6 h-6 lg:w-8 lg:h-8 bg-white rounded-full border-2 border-red-500 flex items-center justify-center relative flex-shrink-0">
-                  <div className="absolute w-4 lg:w-6 h-0.5 bg-red-500 rotate-45"></div>
+                  <div className="absolute w-6 lg:w-8 h-0.5 bg-red-500 rotate-45"></div>
                 </div>
                 <span className="text-white text-xl lg:text-4xl font-bold">
                   Metabolismo lento
@@ -168,7 +168,7 @@ export default function LandingPage() {
               </div>
               <div className="flex items-center gap-4 lg:gap-6">
                 <div className="w-6 h-6 lg:w-8 lg:h-8 bg-white rounded-full border-2 border-red-500 flex items-center justify-center relative flex-shrink-0">
-                  <div className="absolute w-4 lg:w-6 h-0.5 bg-red-500 rotate-45"></div>
+                  <div className="absolute w-6 lg:w-8 h-0.5 bg-red-500 rotate-45"></div>
                 </div>
                 <span className="text-white text-xl lg:text-4xl font-bold">
                   Dietas e treinos que não se encaixam na sua rotina
@@ -176,7 +176,7 @@ export default function LandingPage() {
               </div>
               <div className="flex items-center gap-4 lg:gap-6">
                 <div className="w-6 h-6 lg:w-8 lg:h-8 bg-white rounded-full border-2 border-red-500 flex items-center justify-center relative flex-shrink-0">
-                  <div className="absolute w-4 lg:w-6 h-0.5 bg-red-500 rotate-45"></div>
+                  <div className="absolute w-6 lg:w-8 h-0.5 bg-red-500 rotate-45"></div>
                 </div>
                 <span className="text-white text-xl lg:text-4xl font-bold">
                   Métodos que não funcionam
@@ -235,7 +235,7 @@ export default function LandingPage() {
                 </span>
               </div>
               <div className="flex items-start gap-4 lg:gap-6">
-                <Pizza className="text-2xl lg:text-4xl w-6 h-6 lg:w-8 lg:h-8 text-orange-500" />
+                <span className="text-2xl lg:text-4xl">🍰</span>
                 <span className="text-black text-xl lg:text-4xl font-medium">
                   Sem abrir mão da comida que você gosta
                 </span>
@@ -280,35 +280,35 @@ export default function LandingPage() {
 
             {/* Testimonials - Responsive grid */}
             <div className="space-y-10 lg:grid lg:grid-cols-3 lg:gap-35 lg:space-y-0">
-              <div>
-                <p className="text-black text-base lg:text-xl leading-relaxed mb-3">
+            <div className="flex flex-col justify-between">
+                <p className="text-black text-base lg:text-xl leading-relaxed px-6">
                   Em poucas semanas, vi meu corpo mais tonificado e
                   definitivamente mais enxuto. As roupas são diferentes! Os
                   treinos são intensos e divertidos.
                 </p>
-                <p className="font-bold text-black text-lg lg:text-2xl">
+                <p className="font-bold text-black text-lg lg:text-2xl p-6 pb-2">
                   Paula A.
                 </p>
               </div>
 
-              <div>
-                <p className="text-black text-base lg:text-xl leading-relaxed mb-3">
+              <div className="flex flex-col justify-between">
+                <p className="text-black text-base lg:text-xl leading-relaxed px-6">
                   Sempre achei que precisava passar horas na academia para ver
                   resultados, mas com o método ACM, meu corpo mudou
                   completamente.
                 </p>
-                <p className="font-bold text-black text-lg lg:text-2xl">
+                <p className="font-bold text-black text-lg lg:text-2xl p-6 pb-2">
                   Luiz F.
                 </p>
               </div>
 
-              <div>
-                <p className="text-black text-base lg:text-xl leading-relaxed mb-3">
+              <div className="flex flex-col justify-between">
+                <p className="text-black text-base lg:text-xl leading-relaxed px-6">
                   Treinos intensos, divertidos e sem pressa de academia. O
                   método funciona mesmo e o mais importante: se adaptou ao meu
                   trabalho.
                 </p>
-                <p className="font-bold text-black text-lg lg:text-2xl">
+                <p className="font-bold text-black text-lg lg:text-2xl p-6 pb-2">
                   Fernanda U.
                 </p>
               </div>
@@ -321,13 +321,13 @@ export default function LandingPage() {
           <div className="max-w-sm mx-auto lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-12">
             {/* Left Column - Coach Photo + CTA (Mobile: full width, Desktop: left side) */}
             <div className="relative mb-8 lg:mb-0">
-              <div className="relative w-full overflow-hidden">
+              <div className="relative w-full overflow-hidden" style={{ lineHeight: 0 }}>
                 <Image
                   src="/images/instructor.webp"
                   alt="Coach profissional do método ACM sorrindo em ambiente profissional"
                   width={942}
                   height={1387}
-                  className="object-cover w-full h-full"
+                  className="object-cover w-full h-full block"
                   sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 384px"
                   loading="lazy"
                   quality={75}
@@ -346,8 +346,8 @@ export default function LandingPage() {
                   {/* Top-right triangle */}
                   <path d="M100,0 L100,40 L60,0 Z" />
 
-                  {/* Bottom-left triangle */}
-                  <path d="M0,100 L0,60 L40,100 Z" />
+                  {/* Bottom-left triangle - extended to prevent gaps */}
+                  <path d="M0,100.5 L0,60 L40,100.5 Z" />
                 </svg>
 
                 {/* CTA Button Overlay - Centered */}

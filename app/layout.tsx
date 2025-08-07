@@ -92,7 +92,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         {/* Critical CSS inline to avoid render blocking */}
         <style dangerouslySetInnerHTML={{
           __html: `
-            *,*::before,*::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
+            *,*::before,*::after{box-sizing:border-box;border-style:solid}
             *::before,*::after{--tw-content:''}
             html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal}
             body{margin:0;line-height:inherit}
@@ -104,7 +104,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
             .w-full{width:100%}
             .h-full{height:100%}
             .hidden{display:none}
-            @media(min-width:1024px){.lg\\:block{display:block}.lg\\:hidden{display:none}}
+            .flex{display:flex}
+            .flex-col{flex-direction:column}
+            .justify-between{justify-content:space-between}
+            .min-h-\\[200px\\]{min-height:200px}
+            .block{display:block}
+            @media(min-width:1024px){.lg\\:block{display:block}.lg\\:hidden{display:none}.lg\\:min-h-\\[250px\\]{min-height:250px}}
           `
         }} />
         

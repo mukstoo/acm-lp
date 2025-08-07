@@ -11,12 +11,6 @@ export default {
       fontFamily: {
         sans: ['var(--font-inter)'],
       },
-      colors: {
-        primary: {
-          yellow: '#FFD700',
-          black: '#000000',
-        }
-      }
     },
   },
   plugins: [],

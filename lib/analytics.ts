@@ -19,14 +19,7 @@ export function trackEvent(eventName: string, parameters?: Record<string, any>) 
   }
 }
 
-export function trackPurchase(value: number, currency: string = 'BRL') {
-  trackEvent('Purchase', {
-    value,
-    currency,
-    content_name: 'ACM - Aceleração do Ciclo Metabólico',
-    content_category: 'Health & Fitness Course',
-  });
-}
+
 
 export function trackAddToCart() {
   trackEvent('AddToCart', {
